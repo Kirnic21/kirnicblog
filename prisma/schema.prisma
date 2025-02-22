@@ -27,6 +27,7 @@ model Profile {
   bio    String?
   user   User    @relation(fields: [userId], references: [id])
   userId Int     @unique
+  profilePicture String?
 }
 
 model User {
@@ -34,10 +35,11 @@ model User {
   email   String   @unique
   name    String?
   posts   Post[]
+  password String
   profile Profile?
 }
 model Comments{
-  id Int @id @default
+  id Int @id @default(autoincrement())
   content String?
   userid Int 
 }
